@@ -7,7 +7,7 @@
           <img src="../assets/logo.png" alt="" />
         </el-col>
         <el-col :span="18">
-        
+         <h2>管理系统</h2>
         </el-col>
         <el-col :span="2">
           <el-button type="success" @click="logout">退出</el-button>
