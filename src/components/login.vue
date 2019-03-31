@@ -61,10 +61,22 @@
     methods: {
       //表单提交
       submit(formName) {
-        this.$refs[formName].validate(valid => {
+        this.$refs[formName].validate( async valid => {
           if (valid) {
             // alert("submit!");
+            let res = await this.$axios.post("login",this.loginForm);
+            if(res.data.meta.status==400){
+              this.$message.error(res.data.meta.msg);
+            }else if(res.data.meta.status===200){
+              this.$message.success(res.data.meta.msg);
+             //缓存数据
+             window.sessionStorage.setItem("token",res.data.data.token);
+              //跳转到主页
+              this.$router.push("/")
+            
+            }
           } else {
+            //失败
            this.$message.error("数据格式错误")
             return false;
           }
@@ -73,7 +85,8 @@
       resetForm(formName) {
         this.$refs[formName].resetFields();
       }
-    }
+    },
+
   };
 </script>
 <style lang="scss">

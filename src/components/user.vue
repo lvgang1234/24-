@@ -9,7 +9,7 @@
       <!--输入框 -->
       <el-row>
         <el-col :span="6">
-          <el-input placeholder="请输入内容" v-model="input5" class="input-with-select">
+          <el-input placeholder="请输入内容" class="input-with-select">
             <el-button slot="append" icon="el-icon-search"></el-button>
           </el-input>
         </el-col>
@@ -35,7 +35,7 @@
   
   <script>
   export default {
-    name: "users",
+    name: "user",
     data() {
       return {
         tableData: [
